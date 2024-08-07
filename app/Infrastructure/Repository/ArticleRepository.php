@@ -27,7 +27,7 @@ class ArticleRepository implements ArticleRepositoryInterface
 
     public function findById(ArticleId $id): ?Article
     {
-        $model = ArticleModel::query()->find($id);
+        $model = ArticleModel::query()->find($id->value());
 
         if ($model === null) {
             return null;

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Application\UseCases;
 
 use App\Domain\Repositories\LinkRepositoryInterface;
-use App\Domain\Service\LinksUpdaterService;
 use App\Domain\ValueObjects\LinkId;
 use Illuminate\Support\Facades\Http;
 use Psr\Log\LoggerInterface;
@@ -14,7 +13,6 @@ class ActualizeLinksUseCase
 {
     public function __construct(
         private readonly LinkRepositoryInterface $linkRepository,
-        private readonly LinksUpdaterService $linksUpdaterService,
         private readonly LoggerInterface $logger
     ) {}
 

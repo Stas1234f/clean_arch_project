@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->date('published_date');
             $table->text('content');
+            $table->timestamps();
         });
     }
 

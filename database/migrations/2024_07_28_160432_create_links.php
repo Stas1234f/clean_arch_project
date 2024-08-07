@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('url');
             $table->string('status');
             $table->date('date_actualization');
+            $table->timestamps();
         });
     }
 

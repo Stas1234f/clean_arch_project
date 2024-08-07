@@ -25,7 +25,8 @@ class EditArticleUseCase
      */
     public function execute(EditArticleDto $articleDto): int
     {
-        $article = $this->articleRepository->findById(new ArticleId($articleDto->id));
+        $articleId = new ArticleId($articleDto->id);
+        $article = $this->articleRepository->findById($articleId);
         if ($article === null) {
             throw new ArticleNotFoundException('Article not found');
         }
@@ -34,7 +35,7 @@ class EditArticleUseCase
         $this->articleRepository->update($article);
 
         $urls = $this->extractorService->extractUrls($articleDto->content);
-        $this->articleLinksService->addArticleLinks($urls, $article->id());
+        $this->articleLinksService->addArticleLinks($urls, $articleId);
 
         return $article->id()->value();
     }

@@ -30,7 +30,7 @@ class LinkRepository implements LinkRepositoryInterface
     public function update(Link $link): void
     {
         LinkModel::query()
-            ->where('id', $link->id())
+            ->where('id', $link->id()->value())
             ->update([
                 'url' => $link->url()->value(),
                 'status' => $link->status()->value(),
@@ -40,7 +40,7 @@ class LinkRepository implements LinkRepositoryInterface
 
     public function findById(LinkId $id): ?Link
     {
-        $model = LinkModel::query()->find($id);
+        $model = LinkModel::query()->find($id->value());
 
         if ($model === null) {
             return null;

@@ -17,8 +17,8 @@ class ArticleLinkRepository implements ArticleLinkRepositoryInterface
     {
         ArticleLinkModel::query()
             ->create([
-                'article_id' => $articleId,
-                'link_id' => $linkId,
+                'article_id' => $articleId->value(),
+                'link_id' => $linkId->value(),
             ]);
     }
 
